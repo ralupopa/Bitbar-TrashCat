@@ -26,7 +26,7 @@ namespace alttrashcat_tests_csharp.tests
             appiumDriver = new AndroidDriver<AndroidElement>(new Uri("http://localhost:4723/wd/hub"), capabilities, TimeSpan.FromSeconds(36000));
             appiumDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Console.WriteLine("Appium driver started");
-            altDriver = new AltDriver(host: "insert_ip_here");
+            altDriver = new AltDriver();
             Console.WriteLine("AltDriver started");
         }
 

@@ -36,6 +36,15 @@ fi
 
 TEST=${TEST:="SampleAppTest"}
 
+# Start AltTester Desktop from batchmode
+echo "Starting AltTester Desktop ..."
+export LICENSE_KEY=$(cat license.txt)
+
+cd AltTesterDesktopLinuxBatchmode
+chmod +x ./AltTesterDesktop.x86_64
+./AltTesterDesktop.x86_64 -batchmode -port 13000 -license $LICENSE_KEY -nographics -termsAndConditionsAccepted &
+cd ..
+
 ## Appium server launch
 echo "Starting Appium ..."
 appium --log-no-colors --log-timestamp
@@ -49,3 +58,8 @@ dotnet test TestAlttrashCSharp.csproj --logger:junit --filter=MainMenuTests
 
 echo "==> Collect reports"
 mv TestResults/TestResults.xml TEST-all.xml
+
+# De-activate license
+echo "De-activating AltTester Desktop license"
+cd AltTesterDesktopLinuxBatchmode
+./AltTesterDesktop.x86_64 -batchmode -removeActivation
