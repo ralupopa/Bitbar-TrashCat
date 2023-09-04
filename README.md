@@ -19,7 +19,14 @@ Tested setup using AltServer running in a Windows Azure VM. The conditions for t
 
 The script which is executed on Bitbar VM needs to contain the installation and launching of AltTester Desktop build.
 
-
 ## Client-Side
 
+Follow [Running Client-Side Appium tests](https://support.smartbear.com/bitbar/docs/en/mobile-app-tests/automated-testing/appium-support/running-client-side-appium-tests.html) to have an overview of the requirements.
 
+1. Upload .apk / .ipa
+2. Set & load `BITBAR_APIKEY` and `BITBAR_APP_ID_SDK_201` as environment variables
+3. Prepare appium and bitbar specific capabilities in SetupAppium function from `BaseTest.cs`.
+4. To be able to connecto to AltServer running in a separate Windows VM, accessible by both tests and game build through IP, set `HOST_ALT_SERVER` as environment variable.
+
+
+! NOTE: Running client side tests with AltServer running on same machine is failing even if using `SmartBear SecureTunnel`. We assume this is happening due to websocket implementation and incompatibility with AltServer.
