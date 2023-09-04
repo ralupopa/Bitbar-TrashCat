@@ -1,4 +1,4 @@
-# Bitbar-TrashCat
+# Running C# tests using Appium and AltTester on Bitbar cloud devices
 
 ## Server-Side
 
