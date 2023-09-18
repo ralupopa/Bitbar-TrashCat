@@ -8,10 +8,6 @@ chmod +x ./dotnet-install.sh
 echo "Set dotnet in PATH so it can be used to execute tests"
 export PATH="$PATH:$HOME/.dotnet"
 
-echo "==> Setup ADB port reverse..."
-adb reverse --remove-all
-adb reverse tcp:13000 tcp:13000
-
 ##### Cloud testrun dependencies start
 echo "Extracting tests.zip..."
 unzip tests.zip
