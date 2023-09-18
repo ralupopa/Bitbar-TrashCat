@@ -17,30 +17,16 @@ echo "Extracting tests.zip..."
 unzip tests.zip
 
 ## Environment variables setup
-export PLATFORM_NAME="Android"
-export UDID=${ANDROID_SERIAL}
+echo "UDID set to ${IOS_UDID}"
 export APPIUM_PORT="4723"
-
-APILEVEL=$(adb shell getprop ro.build.version.sdk)
-APILEVEL="${APILEVEL//[$'\t\r\n']}"
-export PLATFORM_VERSION=${APILEVEL}
-echo "API level is: ${APILEVEL}"
-
-if [ "$APILEVEL" -gt "19" ]; then
-	export AUTOMATION_NAME="UiAutomator2"
-	echo "UiAutomator2"
-else
-	export AUTOMATION_NAME="UiAutomator1"
-	echo "UiAutomator1"
-fi
 
 TEST=${TEST:="SampleAppTest"}
 
 ## Appium server launch
 echo "Starting Appium ..."
-appium --log-no-colors --log-timestamp
+appium -U ${IOS_UDID} --log-no-colors --log-timestamp --command-timeout 120
 
-export APPIUM_APPFILE=$PWD/application.apk # App file is at current working folder
+export APPIUM_APPFILE=$PWD/application.ipa # App file is at current working folder
 
 # Prepare license
 export LICENSE_KEY=$(cat license.txt)
