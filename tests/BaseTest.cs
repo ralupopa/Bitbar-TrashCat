@@ -11,7 +11,7 @@ namespace alttrashcat_tests_csharp.tests
         public String BITBAR_APIKEY = Environment.GetEnvironmentVariable("BITBAR_APIKEY");
         public String BITBAR_APP_ID_SDK_201 = Environment.GetEnvironmentVariable("BITBAR_APP_ID_SDK_201");
         [OneTimeSetUp]
-        public void SetupAppium()
+        public void SetupAppiumAndAltDriver()
         {
 
             AppiumOptions capabilities = new AppiumOptions();
@@ -19,7 +19,6 @@ namespace alttrashcat_tests_csharp.tests
             capabilities.AddAdditionalCapability("platformName", "Android");
             capabilities.AddAdditionalCapability("appium:deviceName", "Android");
             capabilities.AddAdditionalCapability("appium:automationName", "UiAutomator2");
-            capabilities.AddAdditionalCapability("appium:deviceName", "Google Pixel 3a Android 12");
             capabilities.AddAdditionalCapability("appium:newCommandTimeout", 2000);
             
             capabilities.AddAdditionalCapability("bitbar_apiKey", BITBAR_APIKEY);
@@ -42,7 +41,7 @@ namespace alttrashcat_tests_csharp.tests
         }
 
         [OneTimeTearDown]
-        public void DisposeAppium()
+        public void DisposeAppiumAndAltDriver()
         {
             Console.WriteLine("Ending");
             altDriver.Stop();
