@@ -15,11 +15,11 @@ namespace alttrashcat_tests_csharp.tests
 
             capabilities.AddAdditionalCapability("appium:deviceName", "Android");
             capabilities.AddAdditionalCapability("platformName", "Android");
-            capabilities.AddAdditionalCapability("automationName", "UIAutomator2");
+            capabilities.AddAdditionalCapability("appium:automationName", "UIAutomator2");
             capabilities.AddAdditionalCapability("newCommandTimeout", 2000);
 
             // See available devices at: https://cloud.bitbar.com/#public/devices
-            capabilities.AddAdditionalCapability("app", "application.apk");
+            capabilities.AddAdditionalCapability("appium:app", "application.apk");
 
             Console.WriteLine("WebDriver request initiated. Waiting for response, this typically takes 2-3 mins");
 
