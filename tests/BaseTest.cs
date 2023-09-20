@@ -35,7 +35,6 @@ namespace alttrashcat_tests_csharp.tests
             appiumDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Thread.Sleep(15);
             Console.WriteLine("Appium driver started");
-            SetupPortForwarding();
             altDriver = new AltDriver(host: HOST_ALT_SERVER);
             Console.WriteLine("AltDriver started");
         }
@@ -46,13 +45,6 @@ namespace alttrashcat_tests_csharp.tests
             Console.WriteLine("Ending");
             altDriver.Stop();
             appiumDriver.Quit();
-        }
-
-        public void SetupPortForwarding()
-        {
-            AltReversePortForwarding.RemoveReversePortForwardingAndroid();
-            AltReversePortForwarding.ReversePortForwardingAndroid();
-            Console.WriteLine("Port forwarded (Android).");
         }
     }
 }
