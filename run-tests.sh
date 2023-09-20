@@ -15,14 +15,14 @@ unzip tests.zip
 ## Environment variables setup
 echo "UDID set to ${IOS_UDID}"
 export APPIUM_PORT="4723"
+export APPIUM_AUTOMATION="XCUITest"
+export APPIUM_APPFILE="$PWD/TrashCat.ipa"
 
 # TEST=${TEST:="SampleAppTest"}
 
 ## Appium server launch
 echo "Starting Appium ..."
 appium -U ${IOS_UDID} --log-no-colors --log-timestamp --command-timeout 120
-
-export APPIUM_APPFILE=$PWD/TrashCat.ipa # App file is at current working folder
 
 # Install and launch AltTester Desktop
 brew install wget

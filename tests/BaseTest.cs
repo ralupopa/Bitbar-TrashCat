@@ -17,7 +17,7 @@ namespace alttrashcat_tests_csharp.tests
             // See available devices at: https://cloud.bitbar.com/#public/devices
             capabilities.AddAdditionalCapability("appium:deviceName", "Apple iPhone SE 2020 A2296 13.4.1");
             capabilities.AddAdditionalCapability("platformName", "iOS");
-            capabilities.AddAdditionalCapability("automationName", "XCUITest");
+            capabilities.AddAdditionalCapability("appium:automationName", "XCUITest");
             capabilities.AddAdditionalCapability("platformVersion", "13.4.1");
             capabilities.AddAdditionalCapability("newCommandTimeout", 2000);
             
