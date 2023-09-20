@@ -24,7 +24,7 @@ The script which is executed on Bitbar VM needs to contain the installation and 
 Follow [Running Client-Side Appium tests](https://support.smartbear.com/bitbar/docs/en/mobile-app-tests/automated-testing/appium-support/running-client-side-appium-tests.html) to have an overview of the requirements.
 
 1. Upload .apk / .ipa
-2. Set & load `BITBAR_APIKEY` and `BITBAR_APP_ID_SDK_201` as environment variables
+2. Set & load `BITBAR_APIKEY` and `BITBAR_APP_ID_SDK_202` as environment variables
 3. Prepare appium and bitbar specific capabilities in SetupAppium function from `BaseTest.cs`.
 4. To be able to connect to AltServer running in a separate Windows VM, accessible by both tests and game build through IP, set `HOST_ALT_SERVER` as environment variable.
 

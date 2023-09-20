@@ -9,7 +9,7 @@ namespace alttrashcat_tests_csharp.tests
         public AltDriver altDriver;
         public String HOST_ALT_SERVER = Environment.GetEnvironmentVariable("HOST_ALT_SERVER");
         public String BITBAR_APIKEY = Environment.GetEnvironmentVariable("BITBAR_APIKEY");
-        public String BITBAR_APP_ID_SDK_201 = Environment.GetEnvironmentVariable("BITBAR_APP_ID_SDK_201");
+        public String BITBAR_APP_ID_SDK_202 = Environment.GetEnvironmentVariable("BITBAR_APP_ID_SDK_202");
         [OneTimeSetUp]
         public void SetupAppiumAndAltDriver()
         {
@@ -27,7 +27,7 @@ namespace alttrashcat_tests_csharp.tests
 
             // See available devices at: https://cloud.bitbar.com/#public/devices
             capabilities.AddAdditionalCapability("bitbar_device", "Samsung Galaxy A52 -US");
-            capabilities.AddAdditionalCapability("bitbar_app", BITBAR_APP_ID_SDK_201);
+            capabilities.AddAdditionalCapability("bitbar_app", BITBAR_APP_ID_SDK_202);
 
             Console.WriteLine("WebDriver request initiated. Waiting for response, this typically takes 2-3 mins");
 
