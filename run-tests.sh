@@ -16,27 +16,25 @@ unzip tests.zip
 echo "UDID set to ${IOS_UDID}"
 export APPIUM_PORT="4723"
 
-TEST=${TEST:="SampleAppTest"}
+# TEST=${TEST:="SampleAppTest"}
 
 ## Appium server launch
 echo "Starting Appium ..."
 appium -U ${IOS_UDID} --log-no-colors --log-timestamp --command-timeout 120
 
-export APPIUM_APPFILE=$PWD/application.ipa # App file is at current working folder
-
-# Prepare license
-export LICENSE_KEY=$(cat license.txt)
+export APPIUM_APPFILE=$PWD/TrashCat.ipa # App file is at current working folder
 
 # Install and launch AltTester Desktop
-wget https://alttester.com/app/uploads/AltTester/desktop/AltTesterDesktopLinuxBatchmode.zip
-unzip AltTesterDesktopLinuxBatchmode.zip
-cd AltTesterDesktopLinuxBatchmode
-chmod +x ./AltTesterDesktop.x86_64
+brew install wget
+wget https://alttester.com/app/uploads/AltTester/desktop/AltTesterDesktopPackageMac__v2.0.2.zip
+unzip AltTesterDesktopPackageMac__v2.0.2.zip
+cd AltTesterDesktopPackageMac__v2.0.2
+hdiutil attach AltTesterDesktop__v2.0.2.dmg
+cp -R /Volumes/AltTesterDesktop/AltTesterDesktop.app /Applications
 
 # Start AltTester Desktop from batchmode
 echo "Starting AltTester Desktop ..."
-./AltTesterDesktop.x86_64 -batchmode -port 13000 -nographics -logfile /AltTesterLogs/AltTester.log -license $LICENSE_KEY -termsAndConditionsAccepted
-cd ..
+open -a /Applications/AltTesterDesktop.app
 
 ## Run the test:
 echo "Running tests"
@@ -46,7 +44,9 @@ dotnet test TestAlttrashCSharp.csproj --logger:junit --filter=MainMenuTests
 echo "==> Collect reports"
 mv TestResults/TestResults.xml TEST-all.xml
 
-# De-activate license
-echo "De-activating AltTester Desktop license"
-cd AltTesterDesktopLinuxBatchmode
-./AltTesterDesktop.x86_64 -batchmode -removeActivation
+# Remove AltTester Desktop from Applications and Unmount dmg
+echo "Remove AltTesterDesktop from Applications"
+rm -r /Applications/AltTesterDesktop.app
+
+echo "Unmounting AltTester Desktop license"
+hdiutil detach /Volumes/AltTesterDesktop
