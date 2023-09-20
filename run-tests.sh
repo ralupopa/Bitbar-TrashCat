@@ -38,6 +38,8 @@ open -a /Applications/AltTesterDesktop.app
 
 ## Run the test:
 echo "Running tests"
+cd ..
+ls
 mkdir TestResults
 dotnet test TestAlttrashCSharp.csproj --logger:junit --filter=MainMenuTests
 
