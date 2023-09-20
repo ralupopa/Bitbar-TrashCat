@@ -16,17 +16,16 @@ namespace alttrashcat_tests_csharp.tests
 
             AppiumOptions capabilities = new AppiumOptions();
 
-            capabilities.AddAdditionalCapability("platformName", "Android");
-            capabilities.AddAdditionalCapability("appium:deviceName", "Android");
-            capabilities.AddAdditionalCapability("appium:automationName", "UiAutomator2");
-            capabilities.AddAdditionalCapability("appium:newCommandTimeout", 2000);
-            
+            capabilities.AddAdditionalCapability("platformName", "iOS");
+            capabilities.AddAdditionalCapability("appium:deviceName", "Apple iPhone SE 2020 A2296 13.4.1");
+            capabilities.AddAdditionalCapability("appium:automationName", "XCUITest");
+            capabilities.AddAdditionalCapability("appium:bundleId", "fi.altom.trashcat");
             capabilities.AddAdditionalCapability("bitbar_apiKey", BITBAR_APIKEY);
-            capabilities.AddAdditionalCapability("bitbar_project", "client-side: AltServer on custom host; Android");
-            capabilities.AddAdditionalCapability("bitbar_testrun", "Start Page Tests on Samsung");
+            capabilities.AddAdditionalCapability("bitbar_project", "client-side: AltServer on custom host; iOS");
+            capabilities.AddAdditionalCapability("bitbar_testrun", "Start Page Tests on iPhone SE 2020 A2296");
 
             // See available devices at: https://cloud.bitbar.com/#public/devices
-            capabilities.AddAdditionalCapability("bitbar_device", "Samsung Galaxy A52 -US");
+            capabilities.AddAdditionalCapability("bitbar_device", "Apple iPhone SE 2020 A2296 13.4.1");
             capabilities.AddAdditionalCapability("bitbar_app", BITBAR_APP_ID_SDK_202);
 
             Console.WriteLine("WebDriver request initiated. Waiting for response, this typically takes 2-3 mins");
