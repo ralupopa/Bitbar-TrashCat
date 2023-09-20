@@ -23,7 +23,7 @@ namespace alttrashcat_tests_csharp.tests
             capabilities.AddAdditionalCapability("appium:newCommandTimeout", 2000);
             
             capabilities.AddAdditionalCapability("bitbar_apiKey", BITBAR_APIKEY);
-            capabilities.AddAdditionalCapability("bitbar_project", "Client Side SDK 2.0.1 on custom host");
+            capabilities.AddAdditionalCapability("bitbar_project", "client-side: AltServer on custom host; Android");
             capabilities.AddAdditionalCapability("bitbar_testrun", "Start Page Tests on Samsung");
 
             // See available devices at: https://cloud.bitbar.com/#public/devices

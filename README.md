@@ -26,7 +26,7 @@ Follow [Running Client-Side Appium tests](https://support.smartbear.com/bitbar/d
 1. Upload .apk / .ipa
 2. Set & load `BITBAR_APIKEY` and `BITBAR_APP_ID_SDK_201` as environment variables
 3. Prepare appium and bitbar specific capabilities in SetupAppium function from `BaseTest.cs`.
-4. To be able to connecto to AltServer running in a separate Windows VM, accessible by both tests and game build through IP, set `HOST_ALT_SERVER` as environment variable.
+4. To be able to connect to AltServer running in a separate Windows VM, accessible by both tests and game build through IP, set `HOST_ALT_SERVER` as environment variable.
 
 
 ! NOTE: Running client side tests with AltServer running on same machine is failing even if using `SmartBear SecureTunnel`. We assume this is happening due to websocket implementation and incompatibility with AltServer.
