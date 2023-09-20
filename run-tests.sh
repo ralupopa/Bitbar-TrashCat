@@ -18,8 +18,6 @@ export APPIUM_PORT="4723"
 export APPIUM_AUTOMATION="XCUITest"
 export APPIUM_APPFILE="$PWD/TrashCat.ipa"
 
-# TEST=${TEST:="SampleAppTest"}
-
 ## Appium server launch
 echo "Starting Appium ..."
 appium -U ${IOS_UDID} --log-no-colors --log-timestamp --command-timeout 120
@@ -35,7 +33,7 @@ cp -R /Volumes/AltTesterDesktop/AltTesterDesktop.app /Applications
 # Start AltTester Desktop from batchmode
 echo "Starting AltTester Desktop ..."
 open -a /Applications/AltTesterDesktop.app
-
+sleep 10
 ## Run the test:
 echo "Running tests"
 cd ..
