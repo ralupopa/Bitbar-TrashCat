@@ -18,7 +18,7 @@ namespace alttrashcat_tests_csharp.tests
             capabilities.AddAdditionalCapability("appium:deviceName", "Apple iPhone SE 2020 A2296 13.4.1");
             capabilities.AddAdditionalCapability("platformName", "iOS");
             capabilities.AddAdditionalCapability("appium:automationName", "XCUITest");
-            capabilities.AddAdditionalCapability("platformVersion", "13.4.1");
+            capabilities.AddAdditionalCapability("platformVersion", "13.4");
             capabilities.AddAdditionalCapability("newCommandTimeout", 2000);
             
             Console.WriteLine("WebDriver request initiated. Waiting for response, this typically takes 2-3 mins");
