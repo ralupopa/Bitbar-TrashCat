@@ -13,11 +13,12 @@ namespace alttrashcat_tests_csharp.tests
 
             AppiumOptions capabilities = new AppiumOptions();
 
-            capabilities.AddAdditionalCapability("appium:deviceName", "Android");
+            capabilities.AddAdditionalCapability("deviceName", "Android Phone");
+            // capabilities.AddAdditionalCapability("appium:deviceName", "Android Phone");
             capabilities.AddAdditionalCapability("platformName", "Android");
-            capabilities.AddAdditionalCapability("appium:automationName", "UIAutomator2");
-            capabilities.AddAdditionalCapability("appium:app", "TrashCat201.apk");
+            capabilities.AddAdditionalCapability("appium:automationName", "uiautomator2");
             capabilities.AddAdditionalCapability("newCommandTimeout", 2000);
+            capabilities.AddAdditionalCapability("appium:app", "test/application.apk");
 
             Console.WriteLine("WebDriver request initiated. Waiting for response, this typically takes 2-3 mins");
 
