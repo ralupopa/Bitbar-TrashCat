@@ -36,25 +36,20 @@ fi
 
 TEST=${TEST:="SampleAppTest"}
 
+# Start AltTester Desktop from batchmode
+echo "Starting AltTester Desktop ..."
+export LICENSE_KEY=$(cat license.txt)
+
+cd AltTesterDesktopLinuxBatchmode
+chmod +x ./AltTesterDesktop.x86_64
+./AltTesterDesktop.x86_64 -batchmode -port 13000 -license $LICENSE_KEY -nographics -termsAndConditionsAccepted &
+cd ..
+
 ## Appium server launch
 echo "Starting Appium ..."
 appium --log-no-colors --log-timestamp
 
 export APPIUM_APPFILE=$PWD/application.apk # App file is at current working folder
-
-# Prepare license
-export LICENSE_KEY=$(cat license.txt)
-
-# Install and launch AltTester Desktop
-wget https://alttester.com/app/uploads/AltTester/desktop/AltTesterDesktopLinuxBatchmode.zip
-unzip AltTesterDesktopLinuxBatchmode.zip
-cd AltTesterDesktopLinuxBatchmode
-chmod +x ./AltTesterDesktop.x86_64
-
-# Start AltTester Desktop from batchmode
-echo "Starting AltTester Desktop ..."
-./AltTesterDesktop.x86_64 -batchmode -port 13000 -nographics -logfile /AltTesterLogs/AltTester.log -license $LICENSE_KEY -termsAndConditionsAccepted
-cd ..
 
 ## Run the test:
 echo "Running tests"
