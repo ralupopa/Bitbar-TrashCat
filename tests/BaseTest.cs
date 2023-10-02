@@ -7,7 +7,6 @@ namespace alttrashcat_tests_csharp.tests
     {
         public AndroidDriver<AndroidElement> appiumDriver;
         public AltDriver altDriver;
-        public String HOST_ALT_SERVER = Environment.GetEnvironmentVariable("HOST_ALT_SERVER");
         public String BITBAR_APIKEY = Environment.GetEnvironmentVariable("BITBAR_APIKEY");
         public String BITBAR_APP_ID_SDK_202 = Environment.GetEnvironmentVariable("BITBAR_APP_ID_SDK_202");
         [OneTimeSetUp]
@@ -22,7 +21,7 @@ namespace alttrashcat_tests_csharp.tests
             capabilities.AddAdditionalCapability("appium:newCommandTimeout", 2000);
             
             capabilities.AddAdditionalCapability("bitbar_apiKey", BITBAR_APIKEY);
-            capabilities.AddAdditionalCapability("bitbar_project", "client-side: AltServer on custom host; Android");
+            capabilities.AddAdditionalCapability("bitbar_project", "client-side: AltServer on localhost; Android");
             capabilities.AddAdditionalCapability("bitbar_testrun", "Start Page Tests on Samsung");
 
             // See available devices at: https://cloud.bitbar.com/#public/devices
@@ -35,8 +34,9 @@ namespace alttrashcat_tests_csharp.tests
             appiumDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Thread.Sleep(15);
             Console.WriteLine("Appium driver started");
-            altDriver = new AltDriver(host: HOST_ALT_SERVER);
+            altDriver = new AltDriver();
             Console.WriteLine("AltDriver started");
+            SetupPortForwarding();
         }
 
         [OneTimeTearDown]
@@ -45,6 +45,13 @@ namespace alttrashcat_tests_csharp.tests
             Console.WriteLine("Ending");
             altDriver.Stop();
             appiumDriver.Quit();
+        }
+
+        void SetupPortForwarding()
+        {
+            AltReversePortForwarding.RemoveReversePortForwardingAndroid();
+            AltReversePortForwarding.ReversePortForwardingAndroid();
+            Console.WriteLine("Port forwarded (Android).");
         }
     }
 }
